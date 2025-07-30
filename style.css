@@ -882,14 +882,17 @@ body {
 }
 .boxMail .boxMail-container .card1 .userImg{
     position: relative;
-    width: 80px;
-    height: 80px;
+    width: 160px;
+    height: 160px;
     background-color: white;
     border-radius: 50%;
     overflow: hidden;
     border: 2px solid white;
     cursor: pointer;
     margin-bottom: 20px;
+}
+.boxMail .boxMail-container .card1 .username { 
+    margin-bottom: 10px;
 }
 .boxMail .boxMail-container .card1 .userImg img{
     position: absolute;
