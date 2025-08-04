@@ -54,6 +54,93 @@
         #overlay button:hover {
           background: #a76c96;
         }
+
+        /* Nền đằng sau modal */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background-color: rgba(0, 0, 0, 0.74);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 9999;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.4s ease;
+        }
+  
+        /* Modal chính */
+        .modal {
+            background-color: #dd917c;
+            width: 50%;
+            padding: 20px;
+            position: relative;
+            border-radius: 15px;
+            animation: slideFadeIn 0.5s ease-out forwards;
+        }
+    
+        /* Nút đóng */
+        .close-btn {
+            position: absolute;
+            top: 10px;
+            right: 15px;
+            font-size: 25px;
+            font-weight: bold;
+            background: transparent;
+            border: none;
+            cursor: pointer;
+            color: #333;
+        }
+    
+        /* Hiện modal */
+        .modal-overlay.active {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        .modal h2{
+            font-family: 'Sriracha';
+            color: #f0f0f0;
+            font-size: 18px;
+            text-align: start;
+        }
+
+        .modal .ki-ten {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 10px;
+        }
+    
+        /* Animation */
+        @keyframes slideFadeIn {
+            0% {
+            transform: translateY(-20px);
+            opacity: 0;
+            }
+            100% {
+            transform: translateY(0px);
+            opacity: 1;
+            }
+        }
+
+        /* Responsive text & padding */
+        @media (max-width: 768px) {
+            .modal {
+                width: unset;
+                height: unset;
+            }
+        }
+  
+        @media (max-width: 480px) {
+            .modal {
+                width: unset;
+                height: unset;
+            }
+        }
     </style>
 </head>
 
@@ -103,14 +190,18 @@
                     <span></span>
                 </div>
                 <div class="btn">
-                    <button id="btn__letter">
+                    <!-- <button id="btn__letter">
                         <div class="mail">
                             Click here
                             <i class="fa-regular fa-envelope"></i>
                         </div>
+                    </button> -->
+                    <button id="btn__letter" onclick="openModal()">
+                        Click here
+                        <i class="fa-regular fa-envelope"></i>
                     </button>
-
                 </div>
+                
             </div>
             <div class="right">
                 <div class="box__account">
@@ -190,18 +281,18 @@
                         <h3>To Quynh Trang,</h3>
                         <h2>You're a very special girl 🤗 </h2>
                         <h2>
-                            I wish I could remove some of the pain from your life, which you are bearing alone (if you've ). 
+                            I wish I could remove some of the pain from your life, which you are bearing alone. 
                             But you're always welcome. 
                             You can talk anytime you want to speak, especially about things you can't say to others. 
                             Today, I wish you all the best, lots of health, and sweeter. 
                             I always hope we will celebrate many more birthdays like with Cutie^^, 
                         </h2>
-                        <h2>Happy birthday to Quynh Trang🎂💕</h2>
+                        <h2>Happy birthday to Quynh Trang 🎂</h2>
                         <div class="ki-ten">
                             <h2>Signature,</h2>
                         </div>
-                        <div class="ki-ten">
-                            <h4> I can be all you need !</h4>
+                        <div class="ki-ten2">
+                            <h2> DL </h2>
                         </div>
 
                         <div class="imageCute2">
@@ -209,6 +300,34 @@
                         </div>
                     </div>
                 </div>
+            </div>
+        </div>
+
+        <div class="modal-overlay" id="modalOverlay">
+            <div class="modal">
+              <button class="close-btn" onclick="closeModal()">×</button>
+              <h1></h1>
+              <h2>You know,</h2>
+              <h2>
+                  The first time, I met a special girl like you. No message check, no social networks.. 
+                  or you have other reasons, or I’m not outstanding enough for you can keep eyes on me. 
+                  It's ok. Can you tell me, if you want ^^
+              </h2>
+              <h2>
+                  But don't think about any other things. I just want to be friends with you.
+              </h2>
+              <h2>To be honest, I’m very impressed and nice to meet you..!</h2>
+              <h2>Anyway, I've got my eyes on you !</h2>
+              <div class="ki-ten">
+                  <div class="btn">
+                      <button id="btn__letter">
+                          <div class="mail">
+                            <i class="fa-regular fa-envelope"></i> 
+                            For you
+                          </div>
+                      </button>
+                  </div>
+              </div>
             </div>
         </div>
     </div>
@@ -330,14 +449,33 @@
     let mailBox = document.querySelector('.mail')
     let boxmail = document.querySelector('.boxMail')
     var close = document.querySelector('.fa-xmark')
+
     mailBox.onclick = function () {
         mailBox.classList.toggle('active')
         boxmail.classList.add('active')
+        modalOverlay.classList.remove('active');
     }
 
     close.addEventListener('click', function () {
         boxmail.classList.remove('active')
     })
+
+    const modalOverlay = document.getElementById('modalOverlay');
+
+    function openModal() {
+      modalOverlay.classList.add('active');
+    }
+
+    function closeModal() {
+      modalOverlay.classList.remove('active');
+    }
+
+    // Optional: Đóng modal khi nhấn Esc
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape') {
+        closeModal();
+      }
+    });
 
 </script>
 

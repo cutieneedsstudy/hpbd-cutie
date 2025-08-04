@@ -812,6 +812,28 @@ body {
         align-items: center;
         margin-right: 1rem;
     }
+
+    /* letter */
+    .myLetter.active {
+        display: flex;
+        align-items: flex-start !important;
+        justify-content: center;
+    }
+
+    .myLetter .fa-xmark-letter {
+        position: fixed !important;
+        right: -10px !important;
+    }
+    .myLetter .boxMail-container {
+        position: absolute;
+        top: 4rem;
+    }
+    .boxMail .boxMail-container .card2 .card2-content .ki-ten2 {
+        display: flex;
+        justify-content: end;
+        align-items: center;
+        margin-right: 1rem;
+    }
 }
 
 .boxMail{
@@ -951,11 +973,18 @@ body {
     margin-right: 1rem;
 }
 
+.boxMail .boxMail-container .card2 .card2-content .ki-ten2 {
+    display: flex;
+    justify-content: end;
+    align-items: center;
+    margin-right: 1rem;
+}
+
 .boxMail .boxMail-container .card2 h2{
-    font-family: 'Dancing Script', cursive;
+    font-family: fantasy;
     padding: 0px 20px;
-    text-indent: 20px;
-    font-size: 22px;
+    text-indent: 15px;
+    font-size: 19px;
 }
 .boxMail .boxMail-container .card2 .card2-content .imageCute2{
     position: absolute;
